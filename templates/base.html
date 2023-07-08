@@ -12,6 +12,12 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Products</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="{% url 'login_user' %}">Login</a></li>
+            <li><a href="{% url 'logout_user' %}">Logout</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
+            <li><a href="{% url 'profile_update' request.user.pk %}">Profile Update</a></li>
+            {% endif %}
         </ul>
     </nav>
 

@@ -1,8 +1,12 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.views import LoginView, LogoutView
 from bakeryProject.bakery_main.forms import UserRegistrationForm
+from bakeryProject.bakery_main.models import Profile
 
 
 def home_page(request):
@@ -25,14 +29,32 @@ class UserCreationView(CreateView):
         )
         login(self.request, user)
 
+        Profile.objects.create(user=user)
+
         return redirect(self.success_url)
 
 
-class LoginUserView():
-    pass
+class LoginUserView(LoginView):
+    template_name = 'login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home_page')
 
 
-class LogoutUserView():
-    pass
+class LogoutUserView(LogoutView):
+    next_page = 'home_page'
 
 
+class ProfileDetailView(LoginRequiredMixin, DetailView):
+    model = Profile
+    template_name = 'profile_detail.html'
+    context_object_name = 'profile'
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = Profile
+    template_name = 'profile_update.html'
+    fields = ['first_name', 'last_name', 'phone_number']
+
+    def get_success_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.object.pk})

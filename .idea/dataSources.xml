@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="bakery_db@localhost" uuid="cdad3d61-7152-431c-8ece-029765cdabee">
+    <data-source source="LOCAL" name="postgres@localhost" uuid="cdad3d61-7152-431c-8ece-029765cdabee">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/bakery_db</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="Django default" uuid="33398e4d-fb1f-4b15-a1dd-ecc1d353e0e3">
@@ -14,7 +14,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/bakeryProject/settings.py</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/bakery_db</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/baker_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
