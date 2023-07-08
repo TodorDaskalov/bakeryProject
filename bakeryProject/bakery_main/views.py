@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from bakeryProject.bakery_main.forms import UserRegistrationForm
-from bakeryProject.bakery_main.models import Profile
+from bakeryProject.bakery_main.models import Profile, BakeryUser
 
 
 def home_page(request):
@@ -58,3 +58,9 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})
+
+
+class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+    model = BakeryUser
+    template_name = 'user_confirm_delete.html'
+    success_url = reverse_lazy('home_page')
