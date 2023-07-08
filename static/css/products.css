@@ -43,3 +43,32 @@
 .product-info p {
     margin: 5px 0;
 }
+
+/* CSS for category navigation */
+.category-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.category-navigation li {
+  margin-right: 10px;
+}
+
+.category-navigation li:last-child {
+  margin-right: 0;
+}
+
+.category-navigation a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 5px;
+}
+
+.category-navigation a:hover {
+  background-color: #ddd;
+}
+

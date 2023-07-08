@@ -4,6 +4,13 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
     <h2>Product List</h2>
+    <div class="category-navigation">
+        <ul>
+            <li><a href="{% url 'category_products' 'salty' %}">Salty</a></li>
+            <li><a href="{% url 'category_products' 'sweet' %}">Sweet</a></li>
+            <li><a href="{% url 'category_products' 'coffees' %}">Coffees</a></li>
+        </ul>
+    </div>
     <div class="product-container">
         {% for product in products %}
             <div class="product-card">
@@ -11,7 +18,7 @@
                     <img src="{{ product.picture_url }}" alt="{{ product.name }}">
                 </div>
                 <div class="product-info">
-                    <h3>{{ product.name }}</h3>
+                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h3>
                     <p>Price: {{ product.price }}</p>
                     <p>Order: {{ product.order }}</p>
                 </div>
