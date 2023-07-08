@@ -14,7 +14,7 @@ def home_page(request):
 
 
 class UserCreationView(CreateView):
-    template_name = 'register_user.html'
+    template_name = 'users/register_user.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('home_page')
 
@@ -35,7 +35,7 @@ class UserCreationView(CreateView):
 
 
 class LoginUserView(LoginView):
-    template_name = 'login.html'
+    template_name = 'users/login.html'
 
     def get_success_url(self):
         return reverse_lazy('home_page')
@@ -47,13 +47,13 @@ class LogoutUserView(LogoutView):
 
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
-    template_name = 'profile_detail.html'
+    template_name = 'users/profile_detail.html'
     context_object_name = 'profile'
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
-    template_name = 'profile_update.html'
+    template_name = 'users/profile_update.html'
     fields = ['first_name', 'last_name', 'phone_number']
 
     def get_success_url(self):
@@ -62,5 +62,5 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = BakeryUser
-    template_name = 'user_confirm_delete.html'
+    template_name = 'users/user_confirm_delete.html'
     success_url = reverse_lazy('home_page')

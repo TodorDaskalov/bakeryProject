@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bakeryProject.bakery_main'
+    'bakeryProject.bakery_main',
+    'bakeryProject.products'
 ]
 
 MIDDLEWARE = [

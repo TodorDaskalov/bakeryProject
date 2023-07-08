@@ -2,7 +2,11 @@
 {% block page_content %}
 
     <h2>
+        {% if request.user.profile.first_name and request.user.profile.last_name %}
+        Welcome, {{ request.user.profile }}!
+        {% else %}
         Welcome, {{ request.user }}!
+        {% endif %}
     </h2>
 
 {% endblock %}
