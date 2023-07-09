@@ -35,7 +35,7 @@ class BakeryUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(BakeryUser,primary_key=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(BakeryUser, primary_key=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)

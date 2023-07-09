@@ -11,14 +11,16 @@
         <ul>
             <li><a href="{% url 'home_page' %}">Home</a></li>
             <li><a href="{% url 'products_list' %}">Products</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="{% url 'login_user' %}">Login</a></li>
-            <li><a href="{% url 'logout_user' %}">Logout</a></li>
-            <li><a href="{% url 'user_register' %}">Register</a></li>
-            {% if request.user.is_authenticated %}
-            <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
-            <li><a href="{% url 'profile_update' request.user.pk %}">Profile Update</a></li>
-            <li><a href="{% url 'user_delete' user.pk %}">Delete User</a></li>
+            {% if not request.user.is_authenticated %}
+                <li><a href="#">About</a></li>
+                <li><a href="{% url 'login_user' %}">Login</a></li>
+                <li><a href="{% url 'user_register' %}">Register</a></li>
+            {% else %}
+                <li><a href="{% url 'logout_user' %}">Logout</a></li>
+                <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
+                <li><a href="{% url 'profile_update' request.user.pk %}">Profile Update</a></li>
+                <li><a href="{% url 'user_delete' user.pk %}">Delete User</a></li>
+                <li><a href="{% url 'cart_page' %}">Cart</a></li>
             {% endif %}
         </ul>
     </nav>

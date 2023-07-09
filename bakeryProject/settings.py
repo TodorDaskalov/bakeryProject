@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bakeryProject.bakery_main',
-    'bakeryProject.products'
+    'bakeryProject.products',
+    'bakeryProject.cart'
 ]
 
 MIDDLEWARE = [

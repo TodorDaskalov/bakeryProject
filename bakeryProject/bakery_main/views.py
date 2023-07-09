@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from bakeryProject.bakery_main.forms import UserRegistrationForm
 from bakeryProject.bakery_main.models import Profile, BakeryUser
+from bakeryProject.cart.models import Cart
 
 
 def home_page(request):
@@ -30,6 +31,7 @@ class UserCreationView(CreateView):
         login(self.request, user)
 
         Profile.objects.create(user=user)
+        Cart.objects.create(user=user)
 
         return redirect(self.success_url)
 
