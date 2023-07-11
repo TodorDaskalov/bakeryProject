@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -5,6 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView
 
 from bakeryProject.cart.forms import OrderForm
 from bakeryProject.cart.models import CartItem, Cart
+from bakeryProject.orders.models import Order
 
 
 class AddToCartView(LoginRequiredMixin, CreateView):
@@ -51,6 +54,7 @@ def cart_view(request):
 def order_products(request):
 
     cart = Cart.objects.get(user=request.user)
+
     total_price = 0
     for item in cart.items.all():
         total_price += item.product.price * item.quantity
@@ -58,14 +62,37 @@ def order_products(request):
     form = OrderForm()
 
     if request.method == 'POST':
+
         form = OrderForm(request.POST)
+
         if form.is_valid():
-            # Process the cart with the objects in the staff orders page to be prepared
-            return render(request, 'cart/order_success.html')
+            if form.cleaned_data['pickup_time'] != 'now':
+                pickup_time_str = form.cleaned_data['pickup_time']
+                pickup_time = datetime.strptime(pickup_time_str, '%H:%M')
+            else:
+                pickup_time = datetime.now()
+                pickup_time = pickup_time.strftime('%H:%M')
+                pickup_time = datetime.strptime(pickup_time, '%H:%M')
+            products = []
+            for item in cart.items.all():
+                products.append(f'{item.product} x {item.quantity}')
+
+            order = Order.objects.create(
+                user=request.user,
+                pickup_time=pickup_time,
+                products=', '.join(products),
+                status='Received',
+                total_price=total_price)
+
+            order.save()
+
+            cart.items.all().delete()
+
+            return render(request, 'cart/place_order_success.html')
 
     context = {
         'total_price': total_price,
         'form': form
     }
 
-    return render(request, 'cart/order.html', context)
+    return render(request, 'cart/place_order.html', context)

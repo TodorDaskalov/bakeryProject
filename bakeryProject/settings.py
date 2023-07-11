@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bakeryProject.bakery_main',
     'bakeryProject.products',
     'bakeryProject.cart',
+    'bakeryProject.orders',
 ]
 
 MIDDLEWARE = [
