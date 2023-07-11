@@ -17,7 +17,7 @@ class ProductDetailView(DetailView):
 
 class CategoryProductListView(ListView):
     model = Product
-    template_name = 'category_products.html'
+    template_name = 'products/category_products.html'
     context_object_name = 'products'
 
     def get_queryset(self):

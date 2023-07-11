@@ -19,4 +19,5 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f"{self.quantity} x {self.product.name}"
+        return f'{self.product.name} - Quantity: {self.quantity}'
+

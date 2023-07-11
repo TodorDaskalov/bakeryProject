@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView
@@ -47,13 +47,17 @@ class LogoutUserView(LogoutView):
     next_page = 'home_page'
 
 
-class ProfileDetailView(LoginRequiredMixin, DetailView):
+class ProfileDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Profile
     template_name = 'users/profile_detail.html'
     context_object_name = 'profile'
 
+    def test_func(self):
+        profile = self.get_object()
+        return self.request.user == profile.user
 
-class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+
+class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     template_name = 'users/profile_update.html'
     fields = ['first_name', 'last_name', 'phone_number']
@@ -61,8 +65,13 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})
 
+    def test_func(self):
+        profile = self.get_object()
+        return self.request.user == profile.user
+
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = BakeryUser
     template_name = 'users/user_confirm_delete.html'
     success_url = reverse_lazy('home_page')
+

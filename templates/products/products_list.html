@@ -13,7 +13,7 @@
     </div>
     <div class="product-container">
         {% for product in products %}
-            <div class="product-card">
+            <div id="product-{{ product.pk }}" class="product-card">
                 <div class="product-image">
                     <img src="{{ product.picture_url }}" alt="{{ product.name }}">
                 </div>
@@ -28,6 +28,7 @@
                         </label>
                         <button type="submit">Add to Cart</button>
                     </form>
+
                 </div>
             </div>
         {% empty %}
