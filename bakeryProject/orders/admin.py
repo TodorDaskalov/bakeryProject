@@ -1,3 +1,7 @@
 from django.contrib import admin
+from bakeryProject.orders.models import Order
 
-# Register your models here.
+
+@admin.register(Order)
+class AdminOrder(admin.ModelAdmin):
+    pass

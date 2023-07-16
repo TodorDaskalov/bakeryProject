@@ -1,16 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_content %}
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
-    <h2>Product List</h2>
-    <div class="category-navigation">
-        <ul>
-            <li><a href="{% url 'category_products' 'salty' %}">Salty</a></li>
-            <li><a href="{% url 'category_products' 'sweet' %}">Sweet</a></li>
-            <li><a href="{% url 'category_products' 'coffees' %}">Coffees</a></li>
-        </ul>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/products/products.css' %}">
     <div class="product-container">
         {% for product in products %}
             <div id="product-{{ product.pk }}" class="product-card">
@@ -18,22 +10,22 @@
                     <img src="{{ product.picture_url }}" alt="{{ product.name }}">
                 </div>
                 <div class="product-info">
-                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h3>
-                    <p>Price: {{ product.price }}</p>
-                    <form method="POST" action="{% url 'add_to_cart' %}">
+                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }} - {{ product.price }} €</a>
+                    </h3>
+                    <form class="product-order" method="POST" action="{% url 'add_to_cart' %}">
                         {% csrf_token %}
                         <input type="hidden" name="product" value="{{ product.pk }}">
                         <label>
-                            <input type="number" name="quantity" value="1" min="1">
+                            <input class="order-quantity" type="number" name="quantity" value="1" min="1">
                         </label>
-                        <button type="submit">Add to Cart</button>
+                        <button class="order-button" type="submit">Add to cart</button>
                     </form>
-
                 </div>
             </div>
         {% empty %}
             <p>No products available.</p>
         {% endfor %}
+        <script src="{% static 'js/product-info.js' %}"></script>
     </div>
 
 {% endblock %}

@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home_page.css' %}">
 
-    <h2>
-        {% if request.user.profile.first_name and request.user.profile.last_name %}
-        Welcome, {{ request.user.profile }}!
-        {% else %}
-        Welcome, {{ request.user }}!
-        {% endif %}
-    </h2>
+
+    <div class="text-container">
+        <p class="greeting-text">
+            Welcome to my bakery! I make all the products with a lot of love and I deeply hope you will enjoy them!
+        </p>
+    </div>
+    <div class="category-container">
+        <div class="bakes-links">
+            <a href="{% url 'category_products' 'salty' %}">Salty Bakes</a>
+            <a href="{% url 'category_products' 'sweet' %}">Sweet Bakes</a>
+        </div>
+        <div class="drinks-link">
+            <a href="{% url 'category_products' 'coffees' %}">Drinks</a>
+        </div>
+    </div>
+
 
 {% endblock %}

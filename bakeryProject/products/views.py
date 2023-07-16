@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product
 
@@ -23,8 +22,3 @@ class CategoryProductListView(ListView):
     def get_queryset(self):
         category = self.kwargs['category']
         return Product.objects.filter(category=category)
-
-# class AllProductsListView(ListView):
-#     model = Product
-#     template_name = 'all_products.html'
-#     context_object_name = 'products'

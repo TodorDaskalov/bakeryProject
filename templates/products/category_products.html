@@ -2,23 +2,30 @@
 {% load static %}
 {% block page_content %}
 
-    <link rel="stylesheet" href="{% static 'css/products_category.css' %}">
-    <h2>{{ category|capfirst }} Products</h2>
-
+    <link rel="stylesheet" href="{% static 'css/products/products.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="product-container">
         {% for product in products %}
-            <div class="product-card">
+            <div id="product-{{ product.pk }}" class="product-card">
                 <div class="product-image">
                     <img src="{{ product.picture_url }}" alt="{{ product.name }}">
                 </div>
                 <div class="product-info">
-                    <h3>{{ product.name }}</h3>
-                    <p>Price: {{ product.price }}</p>
-                    <p>Order: {{ product.order }}</p>
+                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }} - {{ product.price }} €</a>
+                    </h3>
+                    <form class="product-order" method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product" value="{{ product.pk }}">
+                        <label>
+                            <input class="order-quantity" type="number" name="quantity" value="1" min="1">
+                        </label>
+                        <button class="order-button" type="submit">Add to cart</button>
+                    </form>
                 </div>
             </div>
         {% empty %}
-            <p class="no-products">No products available in this category.</p>
+            <p>No products available.</p>
         {% endfor %}
+        <script src="{% static 'js/product-info.js' %}"></script>
     </div>
 {% endblock %}

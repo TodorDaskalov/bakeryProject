@@ -4,39 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Anchi's Bakery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:ital,wght@0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{% url 'home_page' %}">Home</a></li>
-            <li><a href="{% url 'products_list' %}">Products</a></li>
-            {% if not request.user.is_authenticated %}
-                <li><a href="#">About</a></li>
-                <li><a href="{% url 'login_user' %}">Login</a></li>
-                <li><a href="{% url 'user_register' %}">Register</a></li>
-            {% else %}
-                 {% if request.user.is_staff %}
-                      <li><a href="{% url 'show_orders' %}">Show Orders</a></li>
-                      <li><a href="{% url 'logout_user' %}">Logout</a></li>
-                 {% else %}
-                    <li><a href="{% url 'logout_user' %}">Logout</a></li>
-                    <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
-                    <li><a href="{% url 'profile_update' request.user.pk %}">Profile Update</a></li>
-                    <li><a href="{% url 'user_delete' user.pk %}">Delete User</a></li>
-                    <li><a href="{% url 'cart_page' %}">Cart</a></li>
-                 {% endif %}
-            {% endif %}
-        </ul>
-    </nav>
-
-    <div class="container">
+<div class="container">
+    <img class="background_img" src="{% static 'images/background_picture.jpg' %}" alt="">
+    <section>
+        <header>
+            <a href="{% url 'home_page' %}">Anchi's Bakery</a>
+        </header>
+        <main>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home_page' %}">Home</a></li>
+                    <li><a href="{% url 'products_list' %}">All products</a></li>
+                    {% if not request.user.is_authenticated %}
+                        <li><a href="#">About</a></li>
+                        <li><a href="{% url 'login_user' %}">Login</a></li>
+                        <li><a href="{% url 'user_register' %}">Register</a></li>
+                    {% else %}
+                        {% if request.user.is_staff %}
+                            <li><a href="{% url 'show_orders' %}">Show Orders</a></li>
+                            <li><a href="{% url 'logout_user' %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'logout_user' %}">Logout</a></li>
+                            <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
+                            <li><a href="{% url 'profile_update' request.user.pk %}">Profile Update</a></li>
+                            <li><a href="{% url 'user_delete' user.pk %}">Delete User</a></li>
+                            <li><a href="{% url 'cart_page' %}">Cart</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </main>
+    </section>
+    <div class="container-content">
         {% block page_content %}
         {% endblock %}
     </div>
-
     <footer>
-        &copy; 2023 Anchi's Bakery. All rights reserved.
+        <div class="footer-content">
+            <p>&copy; 2023 Anchi's Bakery. All rights reserved.</p>
+            <div class="contacts">
+{#                <p>Follow us on</p>#}
+{#                <div class="contacts-icons">#}
+{#                    <i class="fab fa-instagram"></i>#}
+{#                    <i class="fab fa-facebook-f"></i>#}
+{#                    <i class="fab fa-twitter"></i>#}
+{#                </div>#}
+            </div>
+        </div>
+
     </footer>
+</div>
 </body>
 </html>
