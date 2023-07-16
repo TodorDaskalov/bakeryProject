@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
-    <h1>Update Profile</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile/profile-update.css' %}">
+
+    <div class="profile-update-form">
+        <h1>Update Profile</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
 {% endblock %}

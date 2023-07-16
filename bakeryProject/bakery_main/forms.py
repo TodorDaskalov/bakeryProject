@@ -1,7 +1,8 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from django.forms import TextInput
 from django.contrib.auth import get_user_model
+from bakeryProject.bakery_main.models import BakeryUser
 
 User = get_user_model()
 
@@ -23,3 +24,8 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['email'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}))

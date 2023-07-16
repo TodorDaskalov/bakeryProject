@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block page_content %}
-    <h2>Confirm User Deletion</h2>
-    <p>Are you sure you want to delete the user {{ object.email }}?</p>
-    <form method="POST">
-        {% csrf_token %}
-            <input type="submit" value="Delete">
-            <a href="{% url 'profile_detail' object.pk %}">Cancel</a>
-    </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile/delete-user.css' %}">
+
+    <div class="delete-user-form">
+        <h2>Confirm User Deletion</h2>
+        <p>Are you sure you want to delete the user {{ object.email }}?</p>
+        <form method="POST">
+            {% csrf_token %}
+                <input type="submit" value="Delete">
+                <a href="{% url 'profile_detail' object.pk %}">Cancel</a>
+        </form>
+    </div>
+
 {% endblock %}

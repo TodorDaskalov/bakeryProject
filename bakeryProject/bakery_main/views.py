@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
-from bakeryProject.bakery_main.forms import UserRegistrationForm
+from bakeryProject.bakery_main.forms import UserRegistrationForm, UserLoginForm
 from bakeryProject.bakery_main.models import Profile, BakeryUser
 from bakeryProject.cart.models import Cart
 
@@ -38,6 +38,8 @@ class UserCreationView(CreateView):
 
 class LoginUserView(LoginView):
     template_name = 'users/login.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('home_page')
 
     def get_success_url(self):
         return reverse_lazy('home_page')

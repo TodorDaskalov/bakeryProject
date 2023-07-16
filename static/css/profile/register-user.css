@@ -1,0 +1,66 @@
+.profile-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.profile-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-form p {
+    margin: 10px 0;
+}
+
+.profile-form strong {
+    width: 150px;
+    display: inline-block;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+}
+
+.profile-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.profile-form button[type="submit"]:hover {
+    background-color: #a5a9a5;
+}
+
+.profile-form a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.profile-form a:hover {
+    background-color: #a5a9a5;
+}

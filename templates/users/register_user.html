@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
 
-  <h2>Create an Account</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile/register-user.css' %}">
+    <div class="profile-form">
+        <h2>Create an Account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+    </div>
 
 {% endblock %}

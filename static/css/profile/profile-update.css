@@ -1,0 +1,48 @@
+.profile-update-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.profile-update-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-update-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.profile-update-form input[type="text"],
+.profile-update-form input[type="email"],
+.profile-update-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+.profile-update-form button {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-update-form button:hover {
+  background-color: #a5a9a5;
+}
