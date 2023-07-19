@@ -2,28 +2,35 @@
 {% load custom_filters %}
 {% load static %}
 {% block page_content %}
-    <h2>Cart</h2>
+    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+    <div class="cart-container">
+        {% if cart_items %}
+            <div class="cart-items-container">
+                <ul>
+                    {% for item in cart_items %}
+                        <div class="cart-item">
+                            <h4>{{ item.product.name }}</h4>
+                            <p>Quantity: {{ item.quantity }}</p>
+                            <p>Price: {{ item.product.price }}</p>
+                            <p>Total: {{ item.product.price|multiply:item.quantity|floatformat:2 }}</p>
+                            <form method="POST" action="{% url 'remove_item' item.pk %}">
+                                {% csrf_token %}
+                                <button type="submit">Remove</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <p class="empty-cart">Your cart is empty.</p>
+        {% endif %}
+    </div>
     {% if cart_items %}
-        <ul>
-            {% for item in cart_items %}
-                <div class="cart-item">
-                    <h4>{{ item.product.name }}</h4>
-                    <p>Quantity: {{ item.quantity }}
-                    <p>Price: {{ item.product.price }}</p>
-                    <p>Total: {{ item.product.price|multiply:item.quantity|floatformat:2 }}</p>
-                    <form method="POST" action="{% url 'remove_item' item.pk %}">
-                        {% csrf_token %}
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
-            {% endfor %}
-        </ul>
+    <div class="confirm-order-container">
         <form method="POST" action="{% url 'order_products' %}">
             {% csrf_token %}
             <button type="submit">Confirm and order products</button>
         </form>
-    {% else %}
-        <p>Your cart is empty.</p>
+    </div>
     {% endif %}
-
 {% endblock %}

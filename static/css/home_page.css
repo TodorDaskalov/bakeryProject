@@ -26,8 +26,11 @@
     border-radius: 20px;
     padding: 10px;
     margin: 30px;
-
 }
+
+/*.category-container a:hover {*/
+/*    background-color: #a5a9a5;*/
+/*}*/
 
 .bakes-links {
     display: flex;
@@ -41,6 +44,8 @@
     width: 33%;
     padding: 1% 7%;
 }
+
+
 
 .drinks-link {
     margin-top: 30px;

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
+    <link rel="stylesheet" href="{% static 'css/cart/place-order.css' %}">
     <form method="post">
         {% csrf_token %}
         <label for="{{ form.pickup_time.id_for_label }}">Time to pickup:</label>
@@ -11,7 +13,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <p>Total price: {{ total_price }}</p>
+        <p>Total price: {{ total_price }} €</p>
         <button type="submit">Place Order</button>
     </form>
 {% endblock %}
