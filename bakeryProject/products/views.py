@@ -7,6 +7,9 @@ class ProductListView(ListView):
     template_name = 'products/products_list.html'
     context_object_name = 'products'
 
+    def get_queryset(self):
+        return Product.objects.all().order_by('name')
+
 
 class ProductDetailView(DetailView):
     model = Product
@@ -21,4 +24,4 @@ class CategoryProductListView(ListView):
 
     def get_queryset(self):
         category = self.kwargs['category']
-        return Product.objects.filter(category=category)
+        return Product.objects.filter(category=category).order_by('name')
