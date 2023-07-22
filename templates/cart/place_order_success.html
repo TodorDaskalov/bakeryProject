@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
-    <h1>U did it!!! U placed an order!!!</h1>
+    <link rel="stylesheet" href="{% static 'css/cart/place_order_success.css' %}">
+    <div class="order-success-container">
+        <div class="order-confirmation">
+            <h2>Order Confirmation</h2>
+            <p>Thank you for your order! Your order has been successfully placed.</p>
+            <p>Your order is being processed, and we will notify you when it's ready for pickup.</p>
+            <p>If you have any questions or need assistance, please contact our customer support at <a href="#">123-456-7890</a>.</p>
+        </div>
+    </div>
 {% endblock %}

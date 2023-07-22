@@ -13,7 +13,7 @@ class Order(models.Model):
     )
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    products = models.CharField(max_length=155)
+    products = models.CharField(max_length=500)
     pickup_time = models.DateTimeField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     total_price = models.FloatField()

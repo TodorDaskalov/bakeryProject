@@ -31,7 +31,9 @@
                         <li><a href="{% url 'user_register' %}">Register</a></li>
                     {% else %}
                         {% if request.user.is_staff %}
-                            <li><a href="{% url 'show_orders' %}">Show Orders</a></li>
+                            <li><a href="{% url 'show_orders' %}">Show Orders</a>
+                            <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
+                            <li><a href="{% url 'cart_page' %}">Cart</a></li>
                         {% else %}
                             <li><a href="{% url 'profile_detail' request.user.pk %}">Profile</a></li>
                             <li><a href="{% url 'cart_page' %}">Cart</a></li>

@@ -5,7 +5,7 @@ from bakeryProject.orders.models import Order
 
 def show_orders(request):
 
-    orders = Order.objects.exclude(status='Done')
+    orders = Order.objects.exclude(status='Done').order_by('pickup_time')
 
     context = {
         'orders': orders
