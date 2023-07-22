@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from bakeryProject.orders.models import Order
 
 
