@@ -20,3 +20,10 @@ class Order(models.Model):
     def __str__(self):
         return f"Order #{self.pk} - {self.user}"
 
+    def get_user_info(self):
+        if self.user.profile.first_name and self.user.profile.last_name:
+            return f"{self.user.profile.first_name} {self.user.profile.last_name} - {self.user.email}"
+        else:
+            return self.user
+
+

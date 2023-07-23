@@ -5,7 +5,11 @@
 
     <div class="delete-user-form">
         <h2>Confirm User Deletion</h2>
-        <p>Are you sure you want to delete the user {{ object.email }}?</p>
+        {% if object.profile.first_name and object.profile.last_name %}
+            <p>Are you sure you want to delete the user {{ object.profile.first_name }} {{ object.profile.last_name }}?</p>
+        {% else %}
+            <p>Are you sure you want to delete the user {{ object.email }}?</p>
+        {% endif %}
         <form method="POST">
             {% csrf_token %}
                 <input type="submit" value="Delete">
