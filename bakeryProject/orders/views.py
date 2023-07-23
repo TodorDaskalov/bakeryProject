@@ -5,9 +5,15 @@ from bakeryProject.orders.models import Order
 def show_orders(request):
 
     orders = Order.objects.exclude(status='Done').order_by('pickup_time')
+    received_orders = orders.filter(status='Received')
+    working_on_it_orders = orders.filter(status='Working on it')
+    ready_orders = orders.filter(status='Ready to pickup')
 
     context = {
-        'orders': orders
+        'orders': orders,
+        'received_orders': received_orders,
+        'working_on_it_orders': working_on_it_orders,
+        'ready_orders': ready_orders
     }
 
     return render(request, 'orders/staff_orders.html', context)

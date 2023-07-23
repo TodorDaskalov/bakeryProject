@@ -77,3 +77,6 @@ class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'users/user_confirm_delete.html'
     success_url = reverse_lazy('home_page')
 
+
+def about_page(request):
+    return render(request, 'about.html')

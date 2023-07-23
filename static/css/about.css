@@ -1,0 +1,26 @@
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+.about-container h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.about-container a {
+  color: #ecd01c;
+  text-decoration: none;
+  font-weight: bold;
+}
