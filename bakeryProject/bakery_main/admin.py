@@ -16,3 +16,7 @@ class AdminProfile(admin.ModelAdmin):
     ordering = ('user', 'first_name', 'last_name', 'phone_number')
     list_filter = ('user', 'first_name', 'last_name', 'phone_number')
     search_fields = ('first_name', 'last_name', 'phone_number')
+
+
+admin.site.site_header = 'Bakery Admin'
+admin.site.site_title = 'Bakery Admin Panel'
