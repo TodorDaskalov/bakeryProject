@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import transaction
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView
@@ -52,41 +53,31 @@ def cart_view(request):
 
 
 def order_products(request):
-
     cart = Cart.objects.get(user=request.user)
+    total_price = sum(item.product.price * item.quantity for item in cart.items.all())
 
-    total_price = 0
-    for item in cart.items.all():
-        total_price += item.product.price * item.quantity
-
-    form = OrderForm()
+    form = OrderForm(request.POST or None)
 
     if request.method == 'POST':
-
-        form = OrderForm(request.POST)
-
         if form.is_valid():
-            if form.cleaned_data['pickup_time'] != 'now':
-                pickup_time_str = form.cleaned_data['pickup_time']
-                pickup_time = datetime.strptime(pickup_time_str, '%H:%M')
-            else:
+            pickup_time_str = form.cleaned_data['pickup_time']
+            if pickup_time_str == 'now':
                 pickup_time = datetime.now()
-                pickup_time = pickup_time.strftime('%H:%M')
-                pickup_time = datetime.strptime(pickup_time, '%H:%M')
-            products = []
-            for item in cart.items.all():
-                products.append(f'{item.product} x {item.quantity}')
+            else:
+                pickup_time = datetime.strptime(pickup_time_str, '%H:%M')
 
-            order = Order.objects.create(
-                user=request.user,
-                pickup_time=pickup_time,
-                products=', '.join(products),
-                status='Received',
-                total_price=total_price)
+            products = [f'{item.product} x {item.quantity}' for item in cart.items.all()]
 
-            order.save()
+            with transaction.atomic():
+                order = Order.objects.create(
+                    user=request.user,
+                    pickup_time=pickup_time,
+                    products=', '.join(products),
+                    status='received',
+                    total_price=total_price
+                )
 
-            cart.items.all().delete()
+                cart.items.all().delete()
 
             return render(request, 'cart/place_order_success.html')
 

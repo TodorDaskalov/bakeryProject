@@ -12,12 +12,12 @@
                         <p>Order products: {{ order.products }}</p>
                         <p>Total price: {{ order.total_price|floatformat:2 }} €</p>
                         <p>Pickup time: {{ order.pickup_time|time }}</p>
-                        <p>Status: {{ order.status }}</p>
+                        <p>Status: {{ order.get_status_display }}</p>
                     </div>
                     <a href="{% url 'update_order' order.pk %}">Work on it</a>
                 </li>
             {% empty %}
-                <li class="order-item">No products in this category</li>
+                <li class="order-item">No orders to work on</li>
             {% endfor %}
         </ul>
         <ul class="in-progress-orders">
@@ -29,12 +29,12 @@
                         <p>Order products: {{ order.products }}</p>
                         <p>Total price: {{ order.total_price|floatformat:2 }} €</p>
                         <p>Pickup time: {{ order.pickup_time|time }}</p>
-                        <p>Status: {{ order.status }}</p>
+                        <p>Status: {{ order.get_status_display }}</p>
                     </div>
                     <a href="{% url 'update_order' order.pk %}">Prepared</a>
                 </li>
             {% empty %}
-                <li class="order-item">No products in this category</li>
+                <li class="order-item">No orders in preparation process</li>
             {% endfor %}
         </ul>
         <ul class="ready-orders">
@@ -46,12 +46,12 @@
                         <p>Order products: {{ order.products }}</p>
                         <p>Total price: {{ order.total_price|floatformat:2  }} €</p>
                         <p>Pickup time: {{ order.pickup_time|time }}</p>
-                        <p>Status: {{ order.status }}</p>
+                        <p>Status: {{ order.get_status_display }}</p>
                     </div>
                     <a href="{% url 'update_order' order.pk %}">Finish order</a>
                 </li>
             {% empty %}
-                <li class="order-item">No products in this category</li>
+                <li class="order-item">No ready orders</li>
             {% endfor %}
         </ul>
     </div>

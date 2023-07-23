@@ -5,9 +5,9 @@ from bakeryProject.orders.models import Order
 def show_orders(request):
 
     orders = Order.objects.exclude(status='Done').order_by('pickup_time')
-    received_orders = orders.filter(status='Received')
-    working_on_it_orders = orders.filter(status='Working on it')
-    ready_orders = orders.filter(status='Ready to pickup')
+    received_orders = orders.filter(status='received')
+    working_on_it_orders = orders.filter(status='working')
+    ready_orders = orders.filter(status='ready_to_pickup')
 
     context = {
         'orders': orders,
@@ -23,12 +23,12 @@ def update_order(request, pk):
 
     order = Order.objects.get(pk=pk)
 
-    if order.status == 'Received':
-        order.status = 'Working on it'
-    elif order.status == 'Working on it':
-        order.status = 'Ready to pickup'
-    elif order.status == 'Ready to pickup':
-        order.status = 'Done'
+    if order.status == 'received':
+        order.status = 'working'
+    elif order.status == 'working':
+        order.status = 'ready_to_pickup'
+    elif order.status == 'ready_to_pickup':
+        order.status = 'done'
 
     order.save()
 
