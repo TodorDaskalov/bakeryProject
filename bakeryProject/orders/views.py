@@ -1,4 +1,8 @@
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
+
+from bakeryProject.orders.forms import CustomOrderForm
 from bakeryProject.orders.models import Order
 
 
@@ -33,3 +37,26 @@ def update_order(request, pk):
     order.save()
 
     return redirect('show_orders')
+
+
+@login_required
+def custom_order(request):
+    if request.method == 'POST':
+        form = CustomOrderForm(request.POST)
+        if form.is_valid():
+            customer_name = form.cleaned_data['customer_name']
+            email = form.cleaned_data['email']
+            order_text = form.cleaned_data['order_text']
+
+            subject = f"Custom Order Question from {email}"
+            message = f"Customer Name: {customer_name}\nEmail: {email}\nOrder Details: {order_text}"
+            from_email = "anchisbakery02@gmail.com"
+            to_email = ["anchisbakery02@gmail.com"]
+
+            send_mail(subject, message, from_email, to_email)
+
+            return render(request, 'orders/custom_order_success.html')
+    else:
+        form = CustomOrderForm(initial={'user': request.user})
+
+    return render(request, 'orders/custom_order.html', {'form': form})

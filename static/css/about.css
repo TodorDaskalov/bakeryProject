@@ -1,4 +1,8 @@
 .about-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 70vh;
   max-width: 800px;
   margin: 0 auto;
   padding: 50px;

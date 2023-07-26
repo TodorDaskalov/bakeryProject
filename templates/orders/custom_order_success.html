@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/order/custom_order_success.css' %}">
+    <div class="order-success-container">
+        <h2>Order Submitted!</h2>
+        <p>Thank you for your custom order! We will get back to you soon.</p>
+    </div>
+{% endblock %}

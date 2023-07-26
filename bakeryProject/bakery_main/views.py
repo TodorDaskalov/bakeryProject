@@ -42,7 +42,12 @@ class LoginUserView(LoginView):
     success_url = reverse_lazy('home_page')
 
     def get_success_url(self):
-        return reverse_lazy('home_page')
+        referrer = self.request.META.get('HTTP_REFERER')
+
+        if referrer and 'custom_order' in referrer:
+            return reverse_lazy('custom_order')
+        else:
+            return reverse_lazy('home_page')
 
 
 class LogoutUserView(LogoutView):
