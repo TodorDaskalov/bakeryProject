@@ -15,10 +15,9 @@ class CustomOrderForm(forms.Form):
         if user and user.email:
             self.fields['email'].initial = user.email
 
-        profile = Profile.objects.filter(user=user).first()
-        if profile.first_name and profile.last_name:
-            self.fields['customer_name'].initial = f"{profile.first_name} {profile.last_name}"
-        else:
-            customer_name = ""
-            self.fields['customer_name'].initial = customer_name
-            self.fields['customer_name'].widget.attrs['placeholder'] = "Please write your name here"
+        customer_name = str(Profile.objects.filter(user=user).first())
+
+        customer_name = customer_name.replace('None', '').strip()
+
+        self.fields['customer_name'].initial = customer_name
+        self.fields['customer_name'].widget.attrs['placeholder'] = "Please write your name here"
