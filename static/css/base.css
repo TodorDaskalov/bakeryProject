@@ -1,4 +1,4 @@
-html{
+html {
     font-family: Poppins, sans-serif;
 }
 
@@ -7,7 +7,7 @@ ul {
 }
 
 
-.container img{
+.container img {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -33,6 +33,7 @@ nav ul {
     background-color: rgba(0, 0, 0, 0.4);
     margin-top: 0;
     padding-bottom: 3px;
+    padding-left: 0;
 
 }
 
@@ -53,3 +54,21 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+
+@media (max-width: 490px) {
+    header {
+        font-size: 60px;
+    }
+
+    nav ul {
+        padding-left: 0;
+    }
+}
+
+/*@media (max-height: 360px) {*/
+/*    .container img {*/
+/*        height: 100%; !* Adjust image height to fit screens with a maximum height of 360px *!*/
+/*        width: auto; !* Allow image width to adjust proportionally *!*/
+/*    }*/
+/*}*/

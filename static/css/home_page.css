@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30vh;
 }
 
 .category-container a {
@@ -46,7 +46,6 @@
 }
 
 
-
 .drinks-link {
     margin-top: 30px;
     font-size: 42px;
@@ -56,5 +55,49 @@
 
 .drinks-link a {
     padding: 1% 7%;
+}
+
+@media (max-width: 640px) {
+    .category-container a {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 460px) {
+    .category-container {
+        margin-top: 40px;
+    }
+
+    .category-container a {
+        font-size: 40px;
+    }
+
+    .links-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .bakes-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bakes-links a {
+        width: 100%;
+        margin-left: 0;
+        padding: 1% 0;
+    }
+
+    .drinks-link {
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+    }
+
+    .drinks-link a {
+        margin: 0 auto;
+        background: none;
+
+    }
 }
 
