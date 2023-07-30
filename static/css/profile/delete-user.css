@@ -46,3 +46,19 @@
 .delete-user-form a:hover {
     background-color: #a5a9a5;
 }
+
+@media (max-height: 660px) {
+    .delete-user-form {
+        margin-top: 0;
+        max-height: 55vh;
+        font-size: 16px;
+        overflow: auto;
+    }
+}
+
+@media (max-height: 380px) {
+    .delete-user-form {
+        max-height: 45vh;
+        font-size: 12px;
+    }
+}

@@ -64,3 +64,34 @@
 .profile-form a:hover {
     background-color: #a5a9a5;
 }
+
+@media (max-height: 660px) {
+    .profile-form {
+        margin-top: 0;
+        max-height: 60vh;
+        font-size: 16px;
+        overflow: auto;
+    }
+}
+
+@media (max-height: 480px) {
+    .profile-form {
+        max-height: 55vh;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-height: 420px) {
+    .profile-form {
+        max-height: 50vh;
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 380px) {
+    .profile-form {
+        max-height: 45vh;
+        font-size: 12px;
+    }
+}
