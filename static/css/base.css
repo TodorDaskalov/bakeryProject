@@ -65,10 +65,3 @@ footer {
         padding-left: 0;
     }
 }
-
-/*@media (max-height: 360px) {*/
-/*    .container img {*/
-/*        height: 100%; !* Adjust image height to fit screens with a maximum height of 360px *!*/
-/*        width: auto; !* Allow image width to adjust proportionally *!*/
-/*    }*/
-/*}*/

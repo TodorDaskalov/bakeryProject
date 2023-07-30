@@ -50,3 +50,29 @@
 .order-confirmation a:hover {
     text-decoration: underline;
 }
+
+@media (max-height: 660px) {
+    .order-success-container {
+        overflow: auto;
+        height: 60vh;
+    }
+}
+
+@media (max-height: 480px) {
+    .order-success-container {
+        height: 55vh;
+    }
+}
+
+@media (max-height: 420px) {
+    .order-success-container {
+        height: 46vh;
+    }
+}
+
+@media (max-height: 380px) {
+    .order-success-container {
+        font-size: 12px;
+        height: 43vh;
+    }
+}
