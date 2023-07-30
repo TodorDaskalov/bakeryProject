@@ -1,12 +1,13 @@
 form {
     max-width: 500px;
-    max-height: 60vh;
+    max-height: 75vh;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
+    overflow: auto;
 }
 
 form h2 {
@@ -53,3 +54,34 @@ form button {
 form button:hover {
     background-color: #a5a9a5;
 }
+
+@media (max-height: 720px) {
+    form {
+        max-height: 70vh;
+    }
+}
+
+@media (max-height: 660px) {
+    form {
+        max-height: 60vh;
+    }
+}
+
+@media (max-height: 480px) {
+    form {
+        max-height: 55vh;
+    }
+}
+
+@media (max-height: 420px) {
+    form {
+        max-height: 46vh;
+    }
+}
+
+@media (max-height: 380px) {
+    form {
+        max-height: 43vh;
+    }
+}
+
