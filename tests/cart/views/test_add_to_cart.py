@@ -44,7 +44,7 @@ class AddToCartViewTestCase(TestCase):
         existing_item.refresh_from_db()
         self.assertEqual(existing_item.quantity, 4)
 
-    def test_authenticated_user_access(self):
+    def test_unauthenticated_user_access(self):
         self.client.logout()
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 302)

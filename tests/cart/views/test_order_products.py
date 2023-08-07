@@ -35,7 +35,7 @@ class OrderProductsViewTestCase(TestCase):
         # Check that the cart is empty after placing the order
         self.assertEqual(self.cart.items.count(), 0)
 
-    def test_order_products_order_generated_correct_working_custom_filter(self):
+    def test_order_products__order_generated_correct_working_custom_filter(self):
         # Check that a new order has been created with the correct details
         response = self.client.post(self.url, {'pickup_time': 'now'})
         order = Order.objects.last()

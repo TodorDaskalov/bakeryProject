@@ -16,12 +16,12 @@ class CartViewTestCase(TestCase):
         self.product = Product.objects.create(name='Test Product', price=10.00)
         self.cart_item = CartItem.objects.create(cart=self.cart, product=self.product, quantity=2)
 
-    def test_cart_view_cart_items_display(self):
+    def test_cart__correct_cart_items_display(self):
         response = self.client.get(self.url)
         self.assertContains(response, 'Test Product')
         self.assertContains(response, 'Quantity: 2')
 
-    def test_cart_view_no_cart_items(self):
+    def test_cart__no_cart_items_to_display_display_message(self):
         self.cart.items.all().delete()
         response = self.client.get(self.url)
         self.assertContains(response, 'Your cart is empty.')

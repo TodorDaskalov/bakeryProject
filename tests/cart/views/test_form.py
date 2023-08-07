@@ -4,7 +4,7 @@ from bakeryProject.cart.forms import OrderForm
 
 
 class OrderFormTestCase(TestCase):
-    def test_pickup_time_required(self):
+    def test_form__pickup_time_required(self):
         form = OrderForm(data={'pickup_time': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('pickup_time', form.errors)
@@ -18,7 +18,7 @@ class OrderFormTestCase(TestCase):
         self.assertEqual(form.errors['pickup_time'][0], 'Pickup time should be between 9:00 and 20:00.')
 
     # Test passing only if current time is after 09:00
-    def test_pickup_time_after_current_time(self):
+    def test_form__pickup_time_after_current_time(self):
         now = timezone.now().time()
         form = OrderForm(data={'pickup_time': '09:00'})
         self.assertFalse(form.is_valid())

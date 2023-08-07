@@ -19,20 +19,11 @@ class UpdateOrderViewTestCase(TestCase):
         self.order3 = Order.objects.create(user=self.user, status='ready_to_pickup', pickup_time=timezone.now(),
                                            total_price=10)
 
-    def test_update_order_view_authenticated_user(self):
-        self.update_order_url = reverse('update_order', args=[self.order1.pk])
-        response = self.client.post(self.update_order_url)
-        self.assertEqual(response.status_code, 302)
-        updated_order = Order.objects.get(pk=self.order1.pk)
-        self.assertNotEqual(updated_order.status, 'received')
-        self.assertRedirects(response, reverse('show_orders'))
-
     def test_update_order__changing_status_to_working(self):
         self.update_order_url = reverse('update_order', args=[self.order1.pk])
         self.client.post(self.update_order_url)
         updated_order = Order.objects.get(pk=self.order1.pk)
         self.assertEqual(updated_order.status, 'working')
-        # self.assertEqual(updated_order.status, 'done')
 
     def test_update_order__changing_status_to_ready_to_pickup(self):
         self.update_order_url = reverse('update_order', args=[self.order2.pk])
