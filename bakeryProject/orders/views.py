@@ -6,6 +6,7 @@ from bakeryProject.orders.forms import CustomOrderForm
 from bakeryProject.orders.models import Order
 
 
+@login_required()
 def show_orders(request):
 
     orders = Order.objects.exclude(status='Done').order_by('pickup_time')
@@ -23,6 +24,7 @@ def show_orders(request):
     return render(request, 'orders/staff_orders.html', context)
 
 
+@login_required()
 def update_order(request, pk):
 
     order = Order.objects.get(pk=pk)
