@@ -2,7 +2,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from django.forms import TextInput
 from django.contrib.auth import get_user_model
-from bakeryProject.bakery_main.models import BakeryUser
 
 User = get_user_model()
 
