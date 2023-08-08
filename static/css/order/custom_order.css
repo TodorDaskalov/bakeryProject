@@ -42,6 +42,10 @@ form textarea {
     overflow-y: auto;
 }
 
+input, button, textarea, select {
+    width: 100%;
+}
+
 form button {
     background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
