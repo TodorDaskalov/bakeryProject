@@ -1,0 +1,64 @@
+.delete-user-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.delete-user-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.delete-user-form p {
+    margin: 10px 0;
+}
+
+.delete-user-form form {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-user-form input[type="submit"],
+.delete-user-form a {
+    display: block;
+    margin-top: 20px;
+    width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-user-form a {
+    margin-left: 20px;
+}
+
+.delete-user-form input[type="submit"]:hover,
+.delete-user-form a:hover {
+    background-color: #a5a9a5;
+}
+
+@media (max-height: 660px) {
+    .delete-user-form {
+        margin-top: 0;
+        max-height: 55vh;
+        font-size: 16px;
+        overflow: auto;
+    }
+}
+
+@media (max-height: 380px) {
+    .delete-user-form {
+        max-height: 45vh;
+        font-size: 12px;
+    }
+}

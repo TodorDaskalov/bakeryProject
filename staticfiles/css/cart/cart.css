@@ -1,0 +1,168 @@
+ul {
+    padding: 0;
+}
+
+.wrapper {
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 65vh;
+    overflow: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+.cart-item h4 {
+    width: 200px;
+}
+
+.cart-item p {
+    margin: 5px 0;
+    width: 100px;
+}
+
+.cart-item form {
+    margin-left: 10px;
+}
+
+.cart-item button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: #a5a9a5;
+}
+
+.cart-item form {
+    display: inline;
+}
+
+.confirm-order-container {
+    text-align: center;
+}
+
+.confirm-order-container button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 500px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.confirm-order-container button:hover {
+    background-color: #a5a9a5;
+}
+
+.empty-cart {
+    color: white;
+    font-size: 46px;
+    padding-top: 25vh;
+}
+
+@media (max-width: 660px) {
+    ul {
+        padding: 0;
+    }
+
+    .cart-container {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    .cart-item {
+        max-width: 400px;
+    }
+
+    .confirm-order-container {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    .confirm-order-container button {
+        max-width: 400px;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .cart-item {
+        max-width: 430px;
+    }
+
+    .confirm-order-container button {
+        max-width: 430px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .empty-cart {
+        font-size: 30px;
+    }
+
+    .cart-item {
+        max-width: 350px;
+        font-size: 10px;
+    }
+
+    .cart-item h4 {
+        max-width: 85px;
+    }
+
+    .confirm-order-container button {
+        max-width: 300px;
+    }
+}
+
+@media (max-height: 740px) {
+    .wrapper {
+        max-height: 70vh;
+    }
+}
+
+@media (max-height: 660px) {
+    .wrapper {
+        max-height: 65vh;
+    }
+}
+
+@media (max-height: 560px) {
+    .wrapper {
+        max-height: 60vh;
+    }
+}
+
+@media (max-height: 460px) {
+    .wrapper {
+        max-height: 50vh;
+    }
+}
+
+@media (max-height: 380px) {
+    .wrapper {
+        max-height: 45vh;
+    }
+}

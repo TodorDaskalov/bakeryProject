@@ -1,0 +1,20 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/404.css' %}">
+    <title>404 Not Found</title>
+</head>
+<body>
+    <img src="{% static 'images/how-to-clean-up-after-bread-dough-FT-BLOG0520-fe008ff96e7a4418829051a0a8c8d308.jpg' %}" alt="">
+    <div class="error-container">
+        <h1>Oops! It seems like you've wandered into a floury maze.</h1>
+        <p>Fear not, though! Our bakers are always here to guide you back to the treats.</p>
+        <a href="{% url 'home_page' %}">Back to Home</a>
+        <a href="{% url 'products_list' %}">Explore Our Menu</a>
+        <a href="{% url 'about_page' %}">Contact Us</a>
+    </div>
+</body>
+</html>
