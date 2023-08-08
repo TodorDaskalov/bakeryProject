@@ -16,6 +16,7 @@ class Order(models.Model):
     pickup_time = models.DateTimeField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     total_price = models.FloatField()
+    currency = models.CharField(max_length=10, default='€')
 
     def __str__(self):
         return f"Order #{self.pk} - {self.user}"

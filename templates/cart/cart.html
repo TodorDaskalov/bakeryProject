@@ -12,8 +12,9 @@
                             <div class="cart-item">
                                 <h4>{{ item.product.name }}</h4>
                                 <p>Quantity: {{ item.quantity }}</p>
-                                <p>Price: {{ item.product.price }}</p>
-                                <p>Total: {{ item.product.price|multiply:item.quantity|floatformat:2 }}</p>
+                                <p>Price: {{ item.product.price }} {{ item.product.currency }}</p>
+                                <p>Total: {{ item.product.price|multiply:item.quantity|floatformat:2 }}
+                                          {{ item.product.currency }}</p>
                                 <form method="POST" action="{% url 'remove_item' item.pk %}">
                                     {% csrf_token %}
                                     <button type="submit">Remove</button>

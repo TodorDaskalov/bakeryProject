@@ -10,7 +10,7 @@
                     <img src="{{ product.picture_url }}" alt="{{ product.name }}">
                 </div>
                 <div class="product-info">
-                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }} - {{ product.price }} €</a>
+                    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }} - {{ product.price }} {{ product.currency }}</a>
                     </h3>
                     <form class="product-order" method="POST" action="{% url 'add_to_cart' %}">
                         {% csrf_token %}

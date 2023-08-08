@@ -13,7 +13,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <p>Total price: {{ total_price }} €</p>
+        <p>Total price: {{ total_price }} {{ currency }}</p>
         <button type="submit">Place Order</button>
     </form>
 {% endblock %}

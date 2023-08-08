@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.shortcuts import render, redirect
@@ -55,6 +54,7 @@ def cart_view(request):
 def order_products(request):
     cart = Cart.objects.get(user=request.user)
     total_price = sum(item.product.price * item.quantity for item in cart.items.all())
+    currency = [item.product.currency for item in cart.items.all()][0]
 
     form = OrderForm(request.POST or None)
 
@@ -64,7 +64,7 @@ def order_products(request):
             if pickup_time_str == 'now':
                 pickup_time = datetime.now()
             else:
-                pickup_time = datetime.strptime(pickup_time_str, '%H:%M')
+                pickup_time = datetime.now().strptime(pickup_time_str, '%H:%M')
 
             products = [f'{item.product} x {item.quantity}' for item in cart.items.all()]
 
@@ -74,7 +74,8 @@ def order_products(request):
                     pickup_time=pickup_time,
                     products=', '.join(products),
                     status='received',
-                    total_price=total_price
+                    total_price=total_price,
+                    currency=currency
                 )
 
                 cart.items.all().delete()
@@ -83,6 +84,7 @@ def order_products(request):
 
     context = {
         'total_price': total_price,
+        'currency': currency,
         'form': form
     }
 
