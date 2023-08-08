@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
-
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from bakeryProject.bakery_main.models import Profile
 from bakeryProject.orders.forms import CustomOrderForm
 from bakeryProject.orders.models import Order
 
@@ -28,11 +30,33 @@ def show_orders(request):
 def update_order(request, pk):
 
     order = Order.objects.get(pk=pk)
+    products = order.products
+    user = order.user
+    customer_name = str(Profile.objects.filter(user=user).first())
+    customer_name = customer_name.replace('None', '').strip()
+    if customer_name:
+        name = customer_name
+    else:
+        name = user.email
 
     if order.status == 'received':
         order.status = 'working'
+
     elif order.status == 'working':
         order.status = 'ready_to_pickup'
+        subject = 'Your Order is Ready for Pickup'
+        from_email = 'anchisbakery02@gmail.com'
+        to_email = [order.user.email]
+
+        context = {'order': order,
+                   'products': products,
+                   'name': name}
+
+        html_message = render_to_string('orders/order_ready.html', context)
+        plain_message = strip_tags(html_message)
+
+        send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
+
     elif order.status == 'ready_to_pickup':
         order.status = 'done'
 
