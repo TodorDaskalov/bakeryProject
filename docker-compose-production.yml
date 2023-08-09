@@ -6,7 +6,6 @@ services:
     image: todordaskalov/bakeryproject
     build: .
     command: gunicorn --bind=0.0.0.0:8000 bakeryProject.wsgi:application
-#    platform: linux/amd64
     ports:
       - "8000:8000"
     env_file:
