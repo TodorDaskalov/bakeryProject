@@ -4,6 +4,8 @@ services:
 
   web:
     image: todordaskalov/bakeryproject
+    environment:
+      - TZ=Europe/Sofia
     build: .
     command: gunicorn --bind=0.0.0.0:8000 bakeryProject.wsgi:application
     ports:
@@ -21,12 +23,15 @@ services:
       POSTGRES_USER: postgres-user
       POSTGRES_PASSWORD: password
       PGDATA: /var/lib/postgresql/data/pgdata
+      TZ: "Europe/Sofia"
     ports:
       - "5432:5432"
     volumes:
       - ./postgresql:/var/lib/postgresql/data
   nginx:
     image: nginx
+    environment:
+      - TZ=Europe/Sofia
     ports:
       - "80:80"
       - "443:443"
