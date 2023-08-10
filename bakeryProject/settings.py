@@ -97,7 +97,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = False
+USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = env('STATIC_ROOT', default=BASE_DIR / 'staticfiles')
