@@ -23,7 +23,7 @@ services:
       POSTGRES_USER: postgres-user
       POSTGRES_PASSWORD: password
       PGDATA: /var/lib/postgresql/data/pgdata
-      TZ: "Europe/Sofia"
+      TZ: Europe/Sofia
     ports:
       - "5432:5432"
     volumes:

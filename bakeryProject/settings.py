@@ -93,11 +93,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Sofia'
 
 USE_I18N = True
 
-USE_TZ = False
+USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = env('STATIC_ROOT', default=BASE_DIR / 'staticfiles')
