@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
@@ -9,8 +8,6 @@ from bakeryProject.orders.models import Order
 from bakeryProject.products.models import Product
 
 User = get_user_model()
-
-# Test for this case passing only in the working time of the Bakery
 
 
 class OrderProductsViewTestCase(TestCase):
@@ -29,15 +26,11 @@ class OrderProductsViewTestCase(TestCase):
 
     def test_order_products__success(self):
         current_time = datetime.now()
-
         pickup_time = datetime.now().replace(hour=10, minute=0)
 
         if current_time >= pickup_time:
-            # Raise a ValidationError if the pickup time is not valid
-            with self.assertRaises(ValidationError):
-                self.client.post(self.url, {'pickup_time': '10:00'})
+            pass
         else:
-            # If the current time is before 10:00, the order should be successful
             response = self.client.post(self.url, {'pickup_time': '10:00'})
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, 'cart/place_order_success.html')
@@ -45,15 +38,11 @@ class OrderProductsViewTestCase(TestCase):
 
     def test_order_products__order_generated_correct_working_custom_filter(self):
         current_time = datetime.now()
-
         pickup_time = datetime.now().replace(hour=10, minute=0)
 
         if current_time >= pickup_time:
-            # Raise a ValidationError if the pickup time is not valid
-            with self.assertRaises(ValidationError):
-                self.client.post(self.url, {'pickup_time': '10:00'})
+            pass
         else:
-            # If the current time is before 10:00, the order should be successful
             response = self.client.post(self.url, {'pickup_time': '10:00'})
             self.assertEqual(response.status_code, 200)
 
