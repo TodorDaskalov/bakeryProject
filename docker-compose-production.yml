@@ -15,7 +15,7 @@ services:
     volumes:
       - /tmp/bakeryProject/staticfiles:/app/staticfiles
   postgres:    
-    image: postgres
+    image: postgres:15
     container_name: bakery_postgres_db
     restart: always
     environment:
